@@ -1,0 +1,14 @@
+{
+    "db-connections":{
+        "mongodb":{
+            "host": "cluster0.nquqifb.mongodb.net",
+            "user": "sportProducts",
+            "password": "WEYRp5uDNmh0jyCT",
+            "dbname": "SportProductsDB"
+        }
+    },
+    "secretkeys":{
+        "cryptojs": "jsA5t2@tfhD"
+    }, 
+    "server-port": 3000
+}
