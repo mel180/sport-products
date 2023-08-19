@@ -4,52 +4,52 @@ const mongoose = require("mongoose");
 const validator = require("mongoose-unique-validator");
 
 /** Schema creation */
-const productSchema = new mongoose.Schema({
-    id:{
-        type: "Number",
-        require: true, 
-        unique: true
-    }, 
+const productSchema = new mongoose.Schema({ 
     color:{
         type: "String",
-        require: true
+        required: true
     }, 
     dateFabrication: {
-        type: "Number",
-        require: true
+        type: "String",
+        required: true
     },
     sport:{
         type: "String",
-        require: true
+        required: true
     },
     price:{
         type: "Number",
-        require: true
+        required: true
     },
     brand: {
         type: "String",
-        require: true
+        required: true
     }, 
     availability:{
         type: "Boolean",
-        require: true, 
+        required: true, 
         default: true
     },
     units:{
         type: "Number",
-        require: true
+        required: true
     },
     weight:{
         type: "Number",
-        require: true
+        required: true
     },
     professional:{
         type: "Boolean",
-        require: true, 
+        required: true, 
         default: false
+    },
+    code:{
+        type: "String",
+        required: true,
+        unique: true
     }
 });
 
 /** Schema exportation */
 productSchema.plugin(validator);
-module.exports = productSchema;
+module.exports = mongoose.model("coll_product", productSchema);

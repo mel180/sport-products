@@ -1,9 +1,9 @@
 {
     "db-connections":{
         "mongodb":{
-            "host": "cluster0.nquqifb.mongodb.net",
-            "user": "sportProducts",
-            "password": "WEYRp5uDNmh0jyCT",
+            "host": "cluster0.gik4fkz.mongodb.net",
+            "user": "mariahernandez28361",
+            "password": "CdybKL0yetmFuIa2",
             "dbname": "SportProductsDB"
         }
     },
