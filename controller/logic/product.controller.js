@@ -3,7 +3,7 @@ const dto = require("../../model/dto/product.dto");
 
 /** Helper */
 //const helper = require("../helpers/general.helper");
-//const notHelper = require("../helpers/notification.helper");
+const notHelper = require("../helpers/notification.helper");
 
 exports.createProduct = async(req, res, next) => {
     console.log(req.body);
@@ -20,8 +20,15 @@ exports.createProduct = async(req, res, next) => {
         code: req.body.code
     };
     try {
-        const doc = await dto.save(prdt);
-        return res.json(doc);
+        const codeFilter = await dto.getByCode({code: req.body.code});
+        if (codeFilter == null) {
+            const doc = await dto.save(prdt);
+            notHelper.sendSMS()
+            return res.json(doc);
+        }
+        else {
+            return res.status(400).json({message:"Another product has the same code"})
+        }
     } catch (error) {
         console.log(error);
         return res.status(400).json({err:error});
@@ -30,7 +37,6 @@ exports.createProduct = async(req, res, next) => {
 
 exports.updateProduct = async (req, res, next) => {
     let prdt = {
-        id: req.body.id,
         color: req.body.color,
         dateFabrication: req.body.dateFabrication,
         sport: req.body.sport,
@@ -43,7 +49,10 @@ exports.updateProduct = async (req, res, next) => {
         code: req.body.code
     };
     try {
-        const doc = await dto.update({_id: req.body.id},prdt);
+        const doc = await dto.update({code: req.body.old_code},prdt);
+        if (doc == null) {
+            return res.status(400).json({message:"Product Not Found"})
+        }
         return res.json(doc);
     } catch (error) {
         return res.status(400).json({err:error});
@@ -71,8 +80,8 @@ exports.getByCode = async (req, res, next) => {
 
 exports.deleteProduct = async(req, res, next) => {
     try {
-        const doc = await dto.delete({_id: req.body.id});
-        return res.json(doc);
+        const doc = await dto.delete({code: req.body.code});
+        return res.json({message: "Product deleted"});
     } catch (error) {
         return res.status(400).json({err:error});
     }

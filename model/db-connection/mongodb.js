@@ -28,6 +28,6 @@ module.exports = () => {
     });
 };
 
-// User: sportProducts
-// Password: WEYRp5uDNmh0jyCT
-// mongodb+srv://sportProducts:<password>@cluster0.nquqifb.mongodb.net/
+// User: mariahernandez28361
+// Password: CdybKL0yetmFuIa2
+// mongodb+srv://mariahernandez28361:CdybKL0yetmFuIa2@cluster0.gik4fkz.mongodb.net/SportProductsDB

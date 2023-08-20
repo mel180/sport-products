@@ -10,7 +10,7 @@ const jsonParser = bodyParser.json();
 const urlEncodeParser = bodyParser.urlencoded(
     {extended: true}
 );
-
+ 
 app.use(jsonParser);
 app.use(urlEncodeParser)
 
@@ -19,7 +19,7 @@ app.use("*", ipFn);
 
 /** Methods */
 app.get("/", (req, res, next) => {
-    res.send("Welcome to sport-product api.");
+    res.send("Welcome to sport-products api.");
 });
 
 const ProductRoutes = require("./routes/product.routes");
