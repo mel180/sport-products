@@ -1,7 +1,7 @@
 const controller = require("../controller/logic/product.controller");
 
 module.exports = (app) => {
-    console.log("Loading rroutes of products");
+    console.log("Loading routes of products");
     app.get("/product", (req, res, next) => {
         controller.getAll(req, res, next);
     });
@@ -23,5 +23,5 @@ module.exports = (app) => {
         controller.deleteProduct(req, res, next);
     });
 }
-
+ 
 
