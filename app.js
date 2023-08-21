@@ -17,6 +17,9 @@ app.use(urlEncodeParser)
 const ipFn = require("./middleware/getIpAddress");
 app.use("*", ipFn);
 
+// const tkFn = require("./middleware/verifyToken");
+// app.use(tkFn);
+
 /** Methods */
 app.get("/", (req, res, next) => {
     res.send("Welcome to sport-products api.");
